@@ -38,7 +38,7 @@ M-Net/
 - **model/**: Include M-Net architecture implementation
 - **openstl/**: OpenSTL framework 
 - **tool/**: Development and maintenance utilities
-- **main.py**: Main  script：Training、Validation、Test function 
+- **main.py**: Main  script：Include Training、Validation、Test function 
 - **run.py**: Run script
 - **environment.yml**: Complete development environment configuration
 
