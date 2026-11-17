@@ -1,54 +1,129 @@
 # M-Net
 
-M-Net: A deep learning framework for spatiotemporal sequence forecasting.
+M-Net is a PyTorch-based deep learning project for spatiotemporal sequence forecasting. This repository provides model implementations, data loading utilities, training and evaluation pipelines, and visualization tools.
 
-## 📁 Project Structure  
+## Repository Structure
 
+```
 M-Net/
+├── data_provider/
+│   ├── data_factory.py
+│   └── data_loader.py
+│
+├── dataset/
+│   ├── download_ERA5.txt
+│   ├── download_bair.sh
+│   ├── download_human3.6m.sh
+│   ├── download_kinetics.sh
+│   ├── download_kitticaltech.sh
+│   ├── download_kth.sh
+│   ├── download_mfmnist.sh
+│   ├── download_mmnist.sh
+│   ├── download_sevir.sh
+│   ├── download_taxibj.sh
+│   └── download_weatherbench.sh
+│
+├── model/
+│   ├── CNN.py
+│   ├── CUNet.py
+│   ├── MNet.py
+│   └── Transformer.py
+│
+├── openstl/
+│   ├── api/
+│   ├── core/
+│   ├── datasets/
+│   │   └── pipelines/
+│   ├── methods/
+│   ├── models/
+│   ├── modules/
+│   │   └── layers/
+│   └── utils/
+│
+├── tool/
+│   ├── DPA.py
+│   ├── SC-BiGRU.py
+│   ├── attention.py
+│   ├── map.py
+│   ├── metrics.py
+│   ├── normalization.py
+│   └── plot.py
+│
+├── main.py
+├── run.py
+├── environment.yml
+└── README.md
+```
 
-  ├── data_provider/          # Data loading and preprocessing utilities
-    
-  ├── dataset/                # Dataset or download link 
-  
-  ├── model/                  # models 
-  
-  │   └── ...                 # M-Net\CUNet\CNN implementation 
-  
-  ├── openstl/                # OpenSTL framework integration
-  
-  │   └── ...                 # Base framework components
-  
-  ├── tool/                   # Utility scripts
-  
-  │   └── ...                 # Helper functions and tools
-  
-  ├── main.py                 # Main  script
-  
-  ├── run.py                  # Run script
-  
-  ├── environment.yml         # Conda environment configuration
-  
-  └── README.md               # Project documentation
+### Key Components
 
+| Directory / File  | Description                                                  |
+| ----------------- | ------------------------------------------------------------ |
+| `data_provider/`  | Data loading and preprocessing pipeline                      |
+| `dataset/`        | Dataset download instructions and preparation scripts        |
+| `model/`          | Model architecture implementations                           |
+| `openstl/`        | OpenSTL framework integration and supporting components      |
+| `tool/`           | Attention modules, prediction utilities, metrics, normalization, and visualization |
+| `main.py`         | Training, validation, and testing implementation             |
+| `run.py`          | Main experiment entry point                                  |
+| `environment.yml` | Conda environment and dependency configuration               |
 
-## 🧰 Key Components  
+## Installation
 
-- **data_provider/**: Complete data preprocessing and loading pipeline
-- **dataset/**:  Download links for experimental datasets 
-- **model/**: Include M-Net architecture implementation
-- **openstl/**: OpenSTL framework 
-- **tool/**: Development and maintenance utilities
-- **main.py**: Main  script：Include Training、Validation、Test function 
-- **run.py**: Run script
-- **environment.yml**: Complete development environment configuration
+### 1. Clone the Repository
 
-*Note: This structure represents the core framework organization. Additional implementation details can be found in each module's annotation.*
+```
+git clone https://github.com/Dr-BinYang/M-Net.git
+cd M-Net
+```
 
-## 🚀 Quick Start  
-```bash
-# Create environment
+### 2. Create the Environment
+
+Create the Conda environment using the provided configuration:
+
+```
 conda env create -f environment.yml
-conda activate mnet
+```
 
-# Start run
+Activate the environment:
+
+```
+conda activate pyg
+```
+
+**Environment Requirements**
+
+The provided environment configuration includes:
+
+- Python 3.11.10
+- PyTorch 2.6.0
+- CUDA 12.6
+- PyTorch Geometric 2.6.1
+
+## Running Experiments
+
+### 1. Default Configuration
+
+Run the following command to start the training process:
+
+```
 python run.py
+```
+
+### 2. Custom Configuration
+
+Experimental parameters can be modified through command-line arguments defined in `run.py`.
+
+For example:
+
+```
+python run.py \
+    --model MNet \
+    --seq_len 6 \
+    --pred_len 5 \
+    --batch_size 64 \
+    --learning_rate 0.001
+```
+
+
+
